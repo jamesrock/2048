@@ -4,7 +4,7 @@
   "description": "2048 by Gabriele Cirulli",
   "main": "index.js",
   "scripts": {
-    "watch": "node-sass --watch style/app.scss style/app.css"
+    "watch": "sass --watch style/app.scss style/app.css"
   },
   "repository": {
     "type": "git",

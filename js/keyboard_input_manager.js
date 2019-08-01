@@ -1,22 +1,25 @@
 function KeyboardInputManager() {
+
 	this.events = {};
 
-	if (window.navigator.msPointerEnabled) {
-		//Internet Explorer 10 style
-		this.eventTouchstart    = "MSPointerDown";
-		this.eventTouchmove     = "MSPointerMove";
-		this.eventTouchend      = "MSPointerUp";
-	} else {
-		this.eventTouchstart    = "touchstart";
-		this.eventTouchmove     = "touchmove";
-		this.eventTouchend      = "touchend";
+	if(window.navigator.msPointerEnabled) {
+		// Internet Explorer 10 style
+		this.eventTouchstart    = 'MSPointerDown';
+		this.eventTouchmove     = 'MSPointerMove';
+		this.eventTouchend      = 'MSPointerUp';
+	}
+	else {
+		this.eventTouchstart    = 'touchstart';
+		this.eventTouchmove     = 'touchmove';
+		this.eventTouchend      = 'touchend';
 	}
 
 	this.listen();
+
 };
 
 KeyboardInputManager.prototype.on = function(event, callback) {
-	if (!this.events[event]) {
+	if(!this.events[event]) {
 		this.events[event] = [];
 	}
 	this.events[event].push(callback);
@@ -32,6 +35,7 @@ KeyboardInputManager.prototype.emit = function(event, data) {
 };
 
 KeyboardInputManager.prototype.listen = function() {
+	
 	var self = this;
 
 	var map = {
@@ -69,7 +73,7 @@ KeyboardInputManager.prototype.listen = function() {
 	});
 
 	// Respond to button presses
-	this.bindButtonPress('.retry-button', this.restart);
+	this.bindButtonPress('.retry-button', this.retry);
 	this.bindButtonPress('.restart-button', this.restart);
 	this.bindButtonPress('.keep-playing-button', this.keepPlaying);
 
@@ -125,11 +129,17 @@ KeyboardInputManager.prototype.listen = function() {
 			self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
 		}
 	});
+
 };
 
 KeyboardInputManager.prototype.restart = function(event) {
 	event.preventDefault();
 	this.emit('restart');
+};
+
+KeyboardInputManager.prototype.retry = function(event) {
+	event.preventDefault();
+	this.emit('retry');
 };
 
 KeyboardInputManager.prototype.keepPlaying = function(event) {

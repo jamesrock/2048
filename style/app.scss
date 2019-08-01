@@ -226,9 +226,9 @@ hr {
 				margin-left: 9px;
 				// margin-top: 59px;
 
-	&.keep-playing-button {
-		display: none;
-	}
+				&.keep-playing-button {
+					display: none;
+				}
 			}
 
 			@include animation(fade-in 800ms ease $transition-speed * 12);
@@ -238,14 +238,16 @@ hr {
 				background: rgba($tile-gold-color, .5);
 				color: $bright-text-color;
 
-	a.keep-playing-button {
-		display: inline-block;
-	}
+				a.keep-playing-button {
+					display: inline-block;
+				}
 			}
 
-			&.game-won, &.game-over {
+			&.game-won,
+			&.game-over {
 				display: block;
 			}
+
 		}
 	}
 
@@ -273,9 +275,7 @@ hr {
 		height: $tile-size;
 		margin-right: $grid-spacing;
 		float: left;
-
 		border-radius: $tile-border-radius;
-
 		background: rgba($tile-color, .35);
 
 		&:last-child {
@@ -289,7 +289,9 @@ hr {
 	}
 
 	.tile {
-		&, .tile-inner {
+
+		&,
+		.tile-inner {
 			width: ceil($tile-size);
 			height: ceil($tile-size);
 			line-height: ceil($tile-size);
@@ -398,7 +400,7 @@ hr {
 			}
 		}
 
-		$exponent: $exponent + 1;
+		$exponent: $exponent + 1 !global;
 	}
 
 	// Super tiles (above 2048)
@@ -473,15 +475,17 @@ hr {
 }
 
 @include smaller($mobile-threshold) {
-	// Redefine variables for smaller screens
-	$field-width: 280px;
-	$grid-spacing: 10px;
-	$grid-row-cells: 4;
-	$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
-	$tile-border-radius: 3px;
-	$game-container-margin-top: 17px;
 
-	html, body {
+	// Redefine variables for smaller screens
+	$field-width: 280px !global;
+	$grid-spacing: 10px !global;
+	$grid-row-cells: 4 !global;
+	$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells !global;
+	$tile-border-radius: 3px !global;
+	$game-container-margin-top: 17px !global;
+
+	html,
+	body {
 		font-size: 15px;
 	}
 

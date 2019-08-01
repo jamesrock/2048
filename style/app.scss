@@ -43,8 +43,10 @@ h1.title {
 	font-size: 80px;
 	font-weight: bold;
 	margin: 0;
+	margin-top: -10px;
 	display: block;
 	float: left;
+	line-height: 1;
 }
 
 @include keyframes(move-up) {
@@ -70,14 +72,13 @@ h1.title {
 	position: relative;
 	display: inline-block;
 	background: $game-container-background;
-	padding: 15px 25px;
+	padding: 20px 25px 5px;
 	font-size: $height;
-	height: $height;
-	line-height: $height + 22px;
+	// line-height: $height + 22px;
 	font-weight: bold;
 	border-radius: 3px;
 	color: white;
-	margin-top: 8px;
+	// margin-top: 8px;
 	text-align: center;
 
 	&:after {
@@ -164,7 +165,7 @@ hr {
 	text-decoration: none;
 	color: $bright-text-color;
 	height: 40px;
-	line-height: 42px;
+	line-height: 40px;
 }
 
 // Game field mixin used to render CSS at different width
@@ -493,9 +494,11 @@ hr {
 		margin: 0 auto;
 	}
 
-	.score-container, .best-container {
-		margin-top: 0;
-		padding: 15px 10px;
+	.score-container,
+	.best-container {
+		// margin-top: 0;
+		// padding: 15px 10px;
+		padding: 18px 15px 2px;
 		min-width: 40px;
 	}
 

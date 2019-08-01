@@ -23,8 +23,10 @@ h1.title {
   font-size: 80px;
   font-weight: bold;
   margin: 0;
+  margin-top: -10px;
   display: block;
   float: left;
+  line-height: 1;
 }
 
 @keyframes move-up {
@@ -47,14 +49,11 @@ h1.title {
   position: relative;
   display: inline-block;
   background: #bbada0;
-  padding: 15px 25px;
+  padding: 20px 25px 5px;
   font-size: 25px;
-  height: 25px;
-  line-height: 47px;
   font-weight: bold;
   border-radius: 3px;
   color: white;
-  margin-top: 8px;
   text-align: center;
 }
 .score-container:after,
@@ -180,7 +179,7 @@ hr {
   text-decoration: none;
   color: #f9f6f2;
   height: 40px;
-  line-height: 42px;
+  line-height: 40px;
   margin-left: 9px;
 }
 .game-container .game-message a.keep-playing-button {
@@ -443,7 +442,7 @@ hr {
   text-decoration: none;
   color: #f9f6f2;
   height: 40px;
-  line-height: 42px;
+  line-height: 40px;
   display: block;
   text-align: center;
   float: right;
@@ -474,9 +473,9 @@ body {
     margin: 0 auto;
   }
 
-  .score-container, .best-container {
-    margin-top: 0;
-    padding: 15px 10px;
+  .score-container,
+.best-container {
+    padding: 18px 15px 2px;
     min-width: 40px;
   }
 
@@ -551,7 +550,7 @@ body {
     text-decoration: none;
     color: #f9f6f2;
     height: 40px;
-    line-height: 42px;
+    line-height: 40px;
     margin-left: 9px;
   }
   .game-container .game-message a.keep-playing-button {

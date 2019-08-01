@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "2048 by Gabriele Cirulli",
   "scripts": {
-    "watch": "sass --watch style/app.scss style/app.css",
-    "build": "webpack --watch"
+    "sass": "sass --watch style/app.scss style/app.css",
+    "webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",

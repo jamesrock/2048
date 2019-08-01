@@ -173,18 +173,14 @@ hr {
 		margin-top: $game-container-margin-top;
 		position: relative;
 		padding: $grid-spacing;
-
 		cursor: default;
 		-webkit-touch-callout: none;
 		-ms-touch-callout: none;
-
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
-
 		-ms-touch-action: none;
 		touch-action: none;
-
 		background: $game-container-background;
 		border-radius: $tile-border-radius * 2;
 		width: $field-width;
@@ -195,7 +191,6 @@ hr {
 
 		.game-message {
 			display: none;
-
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -203,7 +198,6 @@ hr {
 			left: 0;
 			background: rgba($tile-color, .5);
 			z-index: 100;
-
 			text-align: center;
 
 			p {
@@ -212,8 +206,6 @@ hr {
 				height: 60px;
 				line-height: 60px;
 				margin-top: 222px;
-				// height: $field-width;
-				// line-height: $field-width;
 			}
 
 			.lower {
@@ -224,7 +216,6 @@ hr {
 			a {
 				@include button;
 				margin-left: 9px;
-				// margin-top: 59px;
 
 				&.keep-playing-button {
 					display: none;
@@ -318,12 +309,10 @@ hr {
 
 	.tile-inner {
 		border-radius: $tile-border-radius;
-
 		background: $tile-color;
 		text-align: center;
 		font-weight: bold;
 		z-index: 10;
-
 		font-size: 55px;
 	}
 
@@ -400,7 +389,7 @@ hr {
 			}
 		}
 
-		$exponent: $exponent + 1 !global;
+		$exponent: $exponent + 1;
 	}
 
 	// Super tiles (above 2048)

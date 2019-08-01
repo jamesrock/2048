@@ -1,3 +1,6 @@
+import Grid from './grid.js';
+import Tile from './tile.js';
+
 function GameManager(size, InputManager, Actuator, StorageManager) {
 
 	this.size           = size; // Size of the grid
@@ -329,3 +332,5 @@ GameManager.prototype.positionsEqual = function(first, second) {
 	return first.x === second.x && first.y === second.y;
 
 };
+
+export default GameManager;

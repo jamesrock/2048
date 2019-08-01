@@ -1,5 +1,5 @@
-(function () {
-	if (typeof window.Element === "undefined" ||
+(function() {
+	if(typeof window.Element === "undefined" ||
 			"classList" in document.documentElement) {
 		return;
 	}

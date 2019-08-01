@@ -35,7 +35,7 @@ KeyboardInputManager.prototype.emit = function(event, data) {
 };
 
 KeyboardInputManager.prototype.listen = function() {
-	
+
 	var self = this;
 
 	var map = {
@@ -152,3 +152,5 @@ KeyboardInputManager.prototype.bindButtonPress = function(selector, fn) {
 	button.addEventListener('click', fn.bind(this));
 	button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+export default KeyboardInputManager;

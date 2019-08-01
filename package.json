@@ -2,9 +2,9 @@
   "name": "2048.jamesrock.me",
   "version": "1.0.0",
   "description": "2048 by Gabriele Cirulli",
-  "main": "index.js",
   "scripts": {
-    "watch": "sass --watch style/app.scss style/app.css"
+    "watch": "sass --watch style/app.scss style/app.css",
+    "build": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "dependencies": {
     "node-sass": "^4.12.0",
     "webpack": "^4.38.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.6"
   }
 }

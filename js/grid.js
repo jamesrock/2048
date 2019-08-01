@@ -1,10 +1,15 @@
+import Tile from './tile.js';
+
 function Grid(size, previousState) {
+
 	this.size = size;
 	this.cells = previousState ? this.fromState(previousState) : this.empty();
+
 };
 
 // Build a grid of the specified size
 Grid.prototype.empty = function() {
+
 	var cells = [];
 
 	for (var x = 0; x < this.size; x++) {
@@ -16,48 +21,55 @@ Grid.prototype.empty = function() {
 	}
 
 	return cells;
+
 };
 
 Grid.prototype.fromState = function(state) {
+
 	var cells = [];
 
-	for (var x = 0; x < this.size; x++) {
+	for(var x = 0; x < this.size; x++) {
 		var row = cells[x] = [];
 
-		for (var y = 0; y < this.size; y++) {
+		for(var y = 0; y < this.size; y++) {
 			var tile = state[x][y];
 			row.push(tile ? new Tile(tile.position, tile.value) : null);
 		}
 	}
 
 	return cells;
+
 };
 
 // Find the first available random position
 Grid.prototype.randomAvailableCell = function() {
+
 	var cells = this.availableCells();
 
-	if (cells.length) {
+	if(cells.length) {
 		return cells[Math.floor(Math.random() * cells.length)];
 	}
+
 };
 
 Grid.prototype.availableCells = function() {
+
 	var cells = [];
 
 	this.eachCell(function (x, y, tile) {
-		if (!tile) {
+		if(!tile) {
 			cells.push({ x: x, y: y });
 		}
 	});
 
 	return cells;
+
 };
 
 // Call callback for every cell
 Grid.prototype.eachCell = function(callback) {
-	for (var x = 0; x < this.size; x++) {
-		for (var y = 0; y < this.size; y++) {
+	for(var x = 0; x < this.size; x++) {
+		for(var y = 0; y < this.size; y++) {
 			callback(x, y, this.cells[x][y]);
 		}
 	}
@@ -78,9 +90,10 @@ Grid.prototype.cellOccupied = function(cell) {
 };
 
 Grid.prototype.cellContent = function(cell) {
-	if (this.withinBounds(cell)) {
+	if(this.withinBounds(cell)) {
 		return this.cells[cell.x][cell.y];
-	} else {
+	}
+	else {
 		return null;
 	}
 };
@@ -115,3 +128,5 @@ Grid.prototype.serialize = function() {
 		cells: cellState
 	};
 };
+
+export default Grid;

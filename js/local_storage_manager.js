@@ -15,14 +15,17 @@ window.fakeStorage = {
 };
 
 function LocalStorageManager() {
+
 	this.bestScoreKey     = 'bestScore';
 	this.gameStateKey     = 'gameState';
 
 	var supported = this.localStorageSupported();
 	this.storage = supported ? window.localStorage : window.fakeStorage;
+
 };
 
 LocalStorageManager.prototype.localStorageSupported = function() {
+
 	var testKey = 'test';
 
 	try {
@@ -30,9 +33,11 @@ LocalStorageManager.prototype.localStorageSupported = function() {
 		storage.setItem(testKey, '1');
 		storage.removeItem(testKey);
 		return true;
-	} catch (error) {
-		return false;
 	}
+	catch(error) {
+		return false;
+	};
+
 };
 
 // Best score getters/setters
@@ -57,3 +62,5 @@ LocalStorageManager.prototype.setGameState = function(gameState) {
 LocalStorageManager.prototype.clearGameState = function() {
 	this.storage.removeItem(this.gameStateKey);
 };
+
+export default LocalStorageManager;

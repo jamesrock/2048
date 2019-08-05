@@ -12,13 +12,17 @@ Grid.prototype.empty = function() {
 
 	var cells = [];
 
-	for (var x = 0; x < this.size; x++) {
+	for(var x = 0; x < this.size; x++) {
+
 		var row = cells[x] = [];
 
-		for (var y = 0; y < this.size; y++) {
+		for(var y = 0; y < this.size; y++) {
+
 			row.push(null);
-		}
-	}
+
+		};
+
+	};
 
 	return cells;
 
@@ -113,12 +117,13 @@ Grid.prototype.withinBounds = function(position) {
 };
 
 Grid.prototype.serialize = function() {
+
 	var cellState = [];
 
-	for (var x = 0; x < this.size; x++) {
+	for(var x = 0; x < this.size; x++) {
 		var row = cellState[x] = [];
 
-		for (var y = 0; y < this.size; y++) {
+		for(var y = 0; y < this.size; y++) {
 			row.push(this.cells[x][y] ? this.cells[x][y].serialize() : null);
 		}
 	}
@@ -127,6 +132,7 @@ Grid.prototype.serialize = function() {
 		size: this.size,
 		cells: cellState
 	};
+
 };
 
 export default Grid;

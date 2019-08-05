@@ -65,7 +65,7 @@ HTMLActuator.prototype.addTile = function(tile) {
 	// We can't use classlist because it somehow glitches when replacing classes
 	var classes = ['tile', 'tile-' + tile.value, positionClass];
 
-	if (tile.value > 2048) classes.push('tile-super');
+	if(tile.value > 2048) classes.push('tile-super');
 
 	this.applyClasses(wrapper, classes);
 
@@ -80,6 +80,7 @@ HTMLActuator.prototype.addTile = function(tile) {
 		});
 	}
 	else if(tile.mergedFrom) {
+
 		classes.push('tile-merged');
 		this.applyClasses(wrapper, classes);
 
@@ -87,10 +88,13 @@ HTMLActuator.prototype.addTile = function(tile) {
 		tile.mergedFrom.forEach(function (merged) {
 			self.addTile(merged);
 		});
+
 	}
 	else {
+
 		classes.push('tile-new');
 		this.applyClasses(wrapper, classes);
+		
 	}
 
 	// Add the inner part of the tile to the wrapper

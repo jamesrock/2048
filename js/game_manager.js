@@ -20,7 +20,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 // Restart the game
 GameManager.prototype.restart = function() {
 
-	if(!confirm('Are you sure you want to start a new game?')) {
+	if(!this.over&&!confirm('Are you sure you want to start a new game?')) {
 		return;
 	};
 
@@ -56,16 +56,18 @@ GameManager.prototype.setup = function() {
 
 	var previousState = this.storageManager.getGameState();
 
-	// Reload the game from a previous game if present
+	// Reload game from previous game if present
 	if(previousState) {
-		this.grid        = new Grid(previousState.grid.size,
-																previousState.grid.cells); // Reload grid
+
+		this.grid        = new Grid(previousState.grid.size, previousState.grid.cells);
 		this.score       = previousState.score;
 		this.over        = previousState.over;
 		this.won         = previousState.won;
 		this.keepPlaying = previousState.keepPlaying;
+
 	}
 	else {
+
 		this.grid        = new Grid(this.size);
 		this.score       = 0;
 		this.over        = false;
@@ -75,7 +77,7 @@ GameManager.prototype.setup = function() {
 		// Add the initial tiles
 		this.addStartTiles();
 
-	}
+	};
 
 	// Update the actuator
 	this.actuate();
@@ -118,7 +120,7 @@ GameManager.prototype.actuate = function() {
 	}
 	else {
 		this.storageManager.setGameState(this.serialize());
-	}
+	};
 
 	this.actuator.actuate(this.grid, {
 		score:      this.score,
@@ -210,7 +212,8 @@ GameManager.prototype.move = function(direction) {
 					self.score += merged.value;
 
 					// The mighty 2048 tile
-					if (merged.value === 2048) self.won = true;
+					if(merged.value === 2048) self.won = true;
+
 				}
 				else {
 					self.moveTile(tile, positions.farthest);
@@ -232,11 +235,11 @@ GameManager.prototype.move = function(direction) {
 
 		if(!this.movesAvailable()) {
 			this.over = true; // Game over!
-		}
+		};
 
 		this.actuate();
 
-	}
+	};
 
 };
 
@@ -263,11 +266,11 @@ GameManager.prototype.buildTraversals = function(vector) {
 	for(var pos = 0; pos < this.size; pos++) {
 		traversals.x.push(pos);
 		traversals.y.push(pos);
-	}
+	};
 
 	// Always traverse from the farthest cell in the chosen direction
-	if (vector.x === 1) traversals.x = traversals.x.reverse();
-	if (vector.y === 1) traversals.y = traversals.y.reverse();
+	if(vector.x === 1) traversals.x = traversals.x.reverse();
+	if(vector.y === 1) traversals.y = traversals.y.reverse();
 
 	return traversals;
 
@@ -281,8 +284,7 @@ GameManager.prototype.findFarthestPosition = function(cell, vector) {
 	do {
 		previous = cell;
 		cell     = { x: previous.x + vector.x, y: previous.y + vector.y };
-	} while (this.grid.withinBounds(cell) &&
-					 this.grid.cellAvailable(cell));
+	} while (this.grid.withinBounds(cell) && this.grid.cellAvailable(cell));
 
 	return {
 		farthest: previous,
@@ -305,11 +307,15 @@ GameManager.prototype.tileMatchesAvailable = function() {
 	var tile;
 
 	for(var x = 0; x < this.size; x++) {
+
 		for(var y = 0; y < this.size; y++) {
+
 			tile = this.grid.cellContent({ x: x, y: y });
 
 			if(tile) {
+
 				for(var direction = 0; direction < 4; direction++) {
+
 					var vector = self.getVector(direction);
 					var cell   = { x: x + vector.x, y: y + vector.y };
 
@@ -317,11 +323,15 @@ GameManager.prototype.tileMatchesAvailable = function() {
 
 					if(other && other.value === tile.value) {
 						return true; // These two tiles can be merged
-					}
-				}
-			}
-		}
-	}
+					};
+
+				};
+
+			};
+
+		};
+
+	};
 
 	return false;
 

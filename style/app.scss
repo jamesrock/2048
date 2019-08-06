@@ -184,8 +184,6 @@ hr {
 		border-radius: $tile-border-radius * 2;
 		width: $field-width;
 		height: $field-width;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 
 		.game-message {

@@ -1,4 +1,21 @@
-@import "fonts/clear-sans.css";
+@font-face {
+  font-family: "Clear Sans";
+  src: url("ClearSans-Light.woff");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Clear Sans";
+  src: url("ClearSans-Regular.woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Clear Sans";
+  src: url("ClearSans-Bold.woff");
+  font-weight: 700;
+  font-style: normal;
+}
 html,
 body {
   margin: 0;

@@ -1,5 +1,6 @@
 @import "helpers";
 @import "fonts";
+@import "animations";
 
 $field-width: 500px;
 $grid-spacing: 15px;
@@ -42,18 +43,6 @@ h1.title {
 	display: block;
 	float: left;
 	line-height: 1;
-}
-
-@include keyframes(move-up) {
-	0% {
-		top: 25px;
-		opacity: 1;
-	}
-
-	100% {
-		top: -50px;
-		opacity: 0;
-	}
 }
 
 .scores-container {
@@ -137,16 +126,6 @@ hr {
 .container {
 	width: $field-width;
 	margin: 0 auto;
-}
-
-@include keyframes(fade-in) {
-	0% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 1;
-	}
 }
 
 // Styles for buttons
@@ -396,35 +375,9 @@ hr {
 	}
 }
 
-@include keyframes(appear) {
-	0% {
-		opacity: 0;
-		@include transform(scale(0));
-	}
-
-	100% {
-		opacity: 1;
-		@include transform(scale(1));
-	}
-}
-
 .tile-new .tile-inner {
 	@include animation(appear 200ms ease $transition-speed);
 	@include animation-fill-mode(backwards);
-}
-
-@include keyframes(pop) {
-	0% {
-		@include transform(scale(0));
-	}
-
-	50% {
-		@include transform(scale(1.2));
-	}
-
-	100% {
-		@include transform(scale(1));
-	}
 }
 
 .tile-merged .tile-inner {
@@ -459,7 +412,6 @@ hr {
 	// Redefine variables for smaller screens
 	$field-width: 280px !global;
 	$grid-spacing: 10px !global;
-	$grid-row-cells: 4 !global;
 	$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells !global;
 	$tile-border-radius: 3px !global;
 	$game-container-margin-top: 17px !global;
